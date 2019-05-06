@@ -145,6 +145,8 @@ private:
     //!
     string Cursor = "> ";
 
+	int CursorLength;
+
     //!
     //! @brief      List of all menu entries.
     //!
@@ -313,7 +315,7 @@ private:
     //!
     //! If cursor is empty or contains only spaces, it will not be set.
     //!
-    void setCursor(const string &Cursor);
+    void setCursor(const string &Cursor, const bool isUnicode);
 
     //!
     //! @brief      Sets startposition of cursor.
@@ -333,6 +335,10 @@ private:
     //! @brief      Returns actual cursor as string.
     //!
     string getCursor();
+
+	void setCursorLength(const int CursorLength);
+
+    int getCursorLength();
 
     //!
     //! @brief      Displays menu. User can select entry now.

@@ -386,12 +386,14 @@ void MenuTemplate::swapEntries(const int &PositionA, const int &PositionB) {
     }
 }
 
-void MenuTemplate::setCursor(const string &Cursor) {
+void MenuTemplate::setCursor(const string &Cursor, const bool isUnicode) {
     try {
         // Testing, if new Cursor equals old Cursor. If true: return.
         if(this->Cursor == Cursor)
             return;
-
+        // Testing to check if it is Unicode
+		if(isUnicode)
+            this->Cursor = Cursor;
         // Testing, if cursor is emptry. If true: exception.
         if(Cursor.empty())
             throw string ("Cursor must not be empty!");
@@ -414,6 +416,14 @@ void MenuTemplate::setCursor(const string &Cursor) {
         clearScreen();
     }
 }
+
+	void MenuTemplate::setCursorLength(const int CursorLength){
+	    this->CursorLength = CursorLength;
+	}
+	
+	int MenuTemplate::getCursorLength(){
+	    return this->CursorLength;
+	}
 
 void MenuTemplate::setCursorStartPosition(const int &CursorStartPosition) {
     try{
@@ -441,6 +451,10 @@ void MenuTemplate::setCursorStartPosition(const int &CursorStartPosition) {
 
 int MenuTemplate::getCursorStartPosition() {
     return CursorStartPosition;
+}
+
+string MenuTemplate::getCursor(){
+	return this->Cursor;
 }
 
 string MenuTemplate::displayGetName() {

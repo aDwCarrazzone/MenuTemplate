@@ -1,0 +1,37 @@
+# Project: Neverwinter Nights Simple Menu
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = main.o MenuTemplate/Entry.o MenuTemplate/MenuTemplate.o MenuTemplate/ExternFunctions/getChar.o
+LINKOBJ  = main.o MenuTemplate/Entry.o MenuTemplate/MenuTemplate.o MenuTemplate/ExternFunctions/getChar.o
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -m32
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = "Neverwinter Nights Simple Menu.exe"
+CXXFLAGS = $(CXXINCS) -m32 -std=c++11
+CFLAGS   = $(INCS) -m32 -std=c++11
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+MenuTemplate/Entry.o: MenuTemplate/Entry.cpp
+	$(CPP) -c MenuTemplate/Entry.cpp -o MenuTemplate/Entry.o $(CXXFLAGS)
+
+MenuTemplate/MenuTemplate.o: MenuTemplate/MenuTemplate.cpp
+	$(CPP) -c MenuTemplate/MenuTemplate.cpp -o MenuTemplate/MenuTemplate.o $(CXXFLAGS)
+
+MenuTemplate/ExternFunctions/getChar.o: MenuTemplate/ExternFunctions/getChar.cpp
+	$(CPP) -c MenuTemplate/ExternFunctions/getChar.cpp -o MenuTemplate/ExternFunctions/getChar.o $(CXXFLAGS)

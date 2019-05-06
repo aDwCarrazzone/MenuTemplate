@@ -22,18 +22,23 @@ int main() {
     // Example menu for a game:
     MenuTemplate::MenuTemplate MenuA;
 
-    MenuA.Title = "\t\tMenuTemplate 1.04";
+    MenuA.Title = "\t\tNeverwinter Nights Simple Menu";
     MenuA.Description = "Choose with UP and DOWN, select with RETURN!";
-    MenuA.setCursor("> ");
+    MenuA.setCursor("\xe2\x99\xa2", 1);
+    MenuA.setCursorLength( MenuA.getCursor().length() );
 
-    MenuA.addEntry("GAME_NEW", "New game");
-    MenuA.addEntry("GAME_LOAD", "Load save state");
-    MenuA.addEntry("GAME_EXIT", "Exit game");
-    MenuA.addEntry("GAME_OPTIONS", "Game options");
+	MenuA.addEntry("MENU_CURSOR", MenuA.getCursor());
+    MenuA.addEntry("GAME_NEW", " New game");
+    MenuA.addEntry("GAME_LOAD", " Load save state");
+    MenuA.addEntry("GAME_EXIT", " Exit game");
+    MenuA.addEntry("GAME_OPTIONS", " Game options");
+    MenuA.addEntry("GAME_VIDEO_OPTIONS", " Game video options");
+    MenuA.addEntry("GAME_SOUND_OPTIONS", " Game sound options");
 
     MenuA.swapEntries(2, "GAME_OPTIONS");
 
     MenuA.setCursorStartPosition(2);
-
-    cout << MenuA.displayGetName() << endl;
+    
+    cout << "Chosen Option: " << MenuA.displayGetName() << " | Current Cursor Length: " << MenuA.getCursorLength() << endl;
 }
+
